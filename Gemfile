@@ -40,6 +40,12 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'minitest'
+  gem 'minitest-spec-rails'
+  gem 'minitest-rails-capybara'
+  gem 'vcr'
+  gem 'webmock'
+  gem 'mocha'
 end
 
 group :development do
