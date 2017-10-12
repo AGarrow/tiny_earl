@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Earls</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Full url</th>
+      <th>Short url</th>
+      <th>View count</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @earls.each do |earl| %>
+      <tr>
+        <td><%= earl.full_url %></td>
+        <td><%= earl.short_url %></td>
+        <td><%= earl.view_count %></td>
+        <td><%= link_to 'Show', earl %></td>
+        <td><%= link_to 'Edit', edit_earl_path(earl) %></td>
+        <td><%= link_to 'Destroy', earl, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Earl', new_earl_path %>

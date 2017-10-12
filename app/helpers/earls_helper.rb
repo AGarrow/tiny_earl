@@ -1,0 +1,2 @@
+module EarlsHelper
+end

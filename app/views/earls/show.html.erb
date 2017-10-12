@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Full url:</strong>
+  <%= @earl.full_url %>
+</p>
+
+<p>
+  <strong>Short url:</strong>
+  <%= @earl.short_url %>
+</p>
+
+<p>
+  <strong>View count:</strong>
+  <%= @earl.view_count %>
+</p>
+
+<%= link_to 'Edit', edit_earl_path(@earl) %> |
+<%= link_to 'Back', earls_path %>

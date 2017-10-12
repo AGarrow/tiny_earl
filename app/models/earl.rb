@@ -1,0 +1,2 @@
+class Earl < ApplicationRecord
+end
