@@ -1,0 +1,11 @@
+%html
+  %head
+    %title TinyEarl
+    = csrf_meta_tags
+
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
+  %body
+    .col-md-8.col-md-offset-2.col-xs-12{align: "center"}
+      = yield

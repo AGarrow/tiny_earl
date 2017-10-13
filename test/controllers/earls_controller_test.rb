@@ -22,6 +22,15 @@ class EarlsControllerTest < ActionDispatch::IntegrationTest
       refute_nil json["short_url"]
     end
 
+    it "should return an existing earl if existing full_url is passed" do
+      assert_difference('Earl.count', 0) do
+        post earls_url, params: { earl: { full_url: youtube.full_url } }
+      end
+      assert_response :success
+      json = JSON.parse(response.body)
+      assert_equal youtube.short_url, json["short_url"]
+    end
+
     it "should return a json with errors if an invalid URL is submitted" do
       post earls_url, params: { earl: { full_url: "this_aint_no_earl" } }
       assert_response 422

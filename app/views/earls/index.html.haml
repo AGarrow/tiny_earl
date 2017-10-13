@@ -1,0 +1,18 @@
+= render partial: "form", locals: { new_earl: new_earl }
+#your-url-container
+%h1
+  Most Visited
+
+%table
+  %thead
+    %tr
+      %th Full url
+      %th Short url
+      %th Views
+
+  %tbody
+    - earls.each do |earl|
+      %tr
+        %td= link_to earl.full_url, earl
+        %td= link_to earl_url(earl), earl
+        %td= earl.view_count

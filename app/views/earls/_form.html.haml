@@ -1,0 +1,7 @@
+.url-form
+  %h3="Enter URL"
+  = form_for(new_earl, remote: true) do |f|
+    .input-group.input-group-lg
+      = f.text_field :full_url, { class: "form-control", placeholder: "e.g.: https://www.youtube.com/watch?v=Gn2yttLwYlo" }
+      .input-group-btn
+        = f.button 'Go', type: :submit, class: 'btn btn-success'
