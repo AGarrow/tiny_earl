@@ -1,48 +1,50 @@
 require 'test_helper'
 
 class EarlsControllerTest < ActionDispatch::IntegrationTest
-  setup do
-    @earl = earls(:one)
+  let(:youtube) { earls(:youtube) }
+
+  describe "#index" do
+    it "should get index" do
+      get earls_url
+      assert_response :success
+    end
   end
 
-  test "should get index" do
-    get earls_url
-    assert_response :success
-  end
+  describe "#create" do
+    it "should create earl and return a short_url" do
+      assert_difference('Earl.count') do
+        post earls_url, params: { earl: { full_url: "https://facebook.com" } }
+      end
 
-  test "should get new" do
-    get new_earl_url
-    assert_response :success
-  end
-
-  test "should create earl" do
-    assert_difference('Earl.count') do
-      post earls_url, params: { earl: { full_url: @earl.full_url, short_url: @earl.short_url, view_count: @earl.view_count } }
+      assert_response :success
+      json = JSON.parse(response.body)
+      assert_equal "https://facebook.com", json["full_url"]
+      refute_nil json["short_url"]
     end
 
-    assert_redirected_to earl_url(Earl.last)
+    it "should return a json with errors if an invalid URL is submitted" do
+      post earls_url, params: { earl: { full_url: "this_aint_no_earl" } }
+      assert_response 422
+      refute_nil JSON.parse(response.body)["full_url"]
+    end
   end
 
-  test "should show earl" do
-    get earl_url(@earl)
-    assert_response :success
-  end
-
-  test "should get edit" do
-    get edit_earl_url(@earl)
-    assert_response :success
-  end
-
-  test "should update earl" do
-    patch earl_url(@earl), params: { earl: { full_url: @earl.full_url, short_url: @earl.short_url, view_count: @earl.view_count } }
-    assert_redirected_to earl_url(@earl)
-  end
-
-  test "should destroy earl" do
-    assert_difference('Earl.count', -1) do
-      delete earl_url(@earl)
+  describe "#show" do
+    it "should redirect to the urls full path" do
+      get earl_url(youtube)
+      assert_redirected_to youtube.full_url
     end
 
-    assert_redirected_to earls_url
+    it "should increment the urls view count" do
+      assert_difference('youtube.reload.view_count', 1) do
+        get earl_url(youtube)
+      end
+    end
+
+    it "should render a 404 for an invalid short url" do
+      assert_raises(ActionController::RoutingError) do
+        get earl_url(short_url: "invalid_string")
+      end
+    end
   end
 end

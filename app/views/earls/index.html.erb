@@ -13,19 +13,15 @@
   </thead>
 
   <tbody>
-    <% @earls.each do |earl| %>
+    <% earls.each do |earl| %>
       <tr>
         <td><%= earl.full_url %></td>
         <td><%= earl.short_url %></td>
         <td><%= earl.view_count %></td>
         <td><%= link_to 'Show', earl %></td>
-        <td><%= link_to 'Edit', edit_earl_path(earl) %></td>
-        <td><%= link_to 'Destroy', earl, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Earl', new_earl_path %>

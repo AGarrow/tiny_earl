@@ -4,6 +4,10 @@ class Earl < ApplicationRecord
 
 	after_create :generate_short_url
 
+	def to_param
+		short_url
+	end
+
 	private
 
 		def generate_short_url

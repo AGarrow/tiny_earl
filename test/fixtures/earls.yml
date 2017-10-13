@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  full_url: MyString
-  short_url: MyString
-  view_count: 1
+youtube:
+  full_url: https://youtube.com
+  short_url: a
+  view_count: 0
 
 two:
   full_url: MyString
