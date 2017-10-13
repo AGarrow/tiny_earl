@@ -1,5 +1,4 @@
 class EarlsController < ApplicationController
-
   def index
     render locals: { earls: Earl.all, new_earl: Earl.new }
   end
@@ -21,11 +20,11 @@ class EarlsController < ApplicationController
 
   private
 
-    def earl
-      @_earl ||= Earl.find_by(short_url: params[:short_url])
-    end
+  def earl
+    @_earl ||= Earl.find_by(short_url: params[:short_url])
+  end
 
-    def earl_params
-      params.require(:earl).permit(:full_url)
-    end
+  def earl_params
+    params.require(:earl).permit(:full_url)
+  end
 end

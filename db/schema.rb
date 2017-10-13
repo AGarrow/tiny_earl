@@ -10,19 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171012232330) do
-
+ActiveRecord::Schema.define(version: 20_171_012_232_330) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension 'plpgsql'
 
-  create_table "earls", force: :cascade do |t|
-    t.string "full_url"
-    t.string "short_url"
-    t.integer "view_count", default: 0
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["full_url"], name: "index_earls_on_full_url"
-    t.index ["short_url"], name: "index_earls_on_short_url"
+  create_table 'earls', force: :cascade do |t|
+    t.string 'full_url'
+    t.string 'short_url'
+    t.integer 'view_count', default: 0
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['full_url'], name: 'index_earls_on_full_url'
+    t.index ['short_url'], name: 'index_earls_on_short_url'
   end
-
 end
