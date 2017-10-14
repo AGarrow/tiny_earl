@@ -1,9 +1,11 @@
 class Earl < ApplicationRecord
+
   validates :full_url, presence: true, format: { with: URI::DEFAULT_PARSER.make_regexp }
   validates :full_url, :short_url, uniqueness: true
 
   after_create :generate_short_url
 
+  scope :top_views, -> { order(view_count: :desc) }
   def to_param
     short_url
   end

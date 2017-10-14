@@ -1,6 +1,9 @@
 class EarlsController < ApplicationController
   def index
-    render locals: { earls: Earl.all, new_earl: Earl.new }
+    render locals: { 
+      earls: Earl.top_views.page(page_params[:page]).per(page_params[:per]), 
+      new_earl: Earl.new 
+    }
   end
 
   def show
@@ -26,5 +29,9 @@ class EarlsController < ApplicationController
 
   def earl_params
     params.require(:earl).permit(:full_url)
+  end
+
+  def page_params
+    params.permit(:page, :per)
   end
 end

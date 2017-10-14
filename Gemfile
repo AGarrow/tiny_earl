@@ -17,7 +17,6 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'dotenv'
 # gem 'therubyracer', platforms: :ruby
 
 # Use CoffeeScript for .coffee assets and views
@@ -37,6 +36,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootstrap-sass'
 gem 'haml-rails'
 gem 'jquery-rails'
+gem 'kaminari'
 
 # reddit api wrapper
 gem 'redd'

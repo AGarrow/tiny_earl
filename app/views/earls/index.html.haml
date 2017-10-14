@@ -1,18 +1,10 @@
 = render partial: "form", locals: { new_earl: new_earl }
 #your-url-container
-%h1
+%h3
   Most Visited
 
-%table
-  %thead
-    %tr
-      %th Full url
-      %th Short url
-      %th Views
-
-  %tbody
-    - earls.each do |earl|
-      %tr
-        %td= link_to earl.full_url, earl
-        %td= link_to earl_url(earl), earl
-        %td= earl.view_count
+.list-group
+  - earls.each do |earl|
+    = link_to truncate(earl.full_url, length: 50), earl, class: "list-group-item"
+.btn-group{ role: "group" }
+  = paginate earls, left: 1, right: 4
