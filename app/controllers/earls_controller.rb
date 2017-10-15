@@ -10,9 +10,7 @@ class EarlsController < ApplicationController
         }
       end
       format.js do
-        render locals: {
-          earls: Earl.top_views.page(page).per(per)
-        }
+        render locals: { earls: Earl.top_views.page(page).per(per) }
       end
     end
   end
