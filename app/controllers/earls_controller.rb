@@ -2,10 +2,19 @@
 class EarlsController < ApplicationController
   # list top earls and display earl form, responds to pagination params
   def index
-    render locals: {
-      earls: Earl.top_views.page(page_params[:page]).per(page_params[:per]),
-      new_earl: Earl.new
-    }
+    respond_to do |format|
+      format.html do
+        render locals: {
+          earls: Earl.top_views.page(page).per(per),
+          new_earl: Earl.new
+        }
+      end
+      format.js do
+        render locals: {
+          earls: Earl.top_views.page(page).per(per)
+        }
+      end
+    end
   end
 
   # render 404 or redirect to full url
@@ -40,5 +49,13 @@ class EarlsController < ApplicationController
     # allowed pagination params
     def page_params
       params.permit(:page, :per)
+    end
+
+    def page
+      page_params[:page] || 1
+    end
+
+    def per
+      page_params[:per] || 25
     end
 end

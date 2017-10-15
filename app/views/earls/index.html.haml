@@ -2,9 +2,8 @@
 #your-url-container
 %h3
   Most Visited
-
-.list-group
-  - earls.each do |earl|
-    = link_to truncate(earl.full_url, length: 50), earl, class: "list-group-item"
-.btn-group{ role: "group" }
-  = paginate earls, left: 1, right: 4
+.list-group#earls
+  = render partial: "list_earls", locals: { earls: earls }
+#load-more
+  %button.btn.btn-success
+    = t('compontnets.buttons.load_more')

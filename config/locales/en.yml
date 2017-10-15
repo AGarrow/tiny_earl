@@ -37,3 +37,9 @@ en:
           attributes:
             full_url:
               invalid: 'Please enter a valid URL'
+  components:
+    buttons:
+      go: Go
+      load_more: Load More
+  messages:
+    nothing_else_here: Theres nothing else here!

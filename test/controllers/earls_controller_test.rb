@@ -8,6 +8,18 @@ class EarlsControllerTest < ActionDispatch::IntegrationTest
       get earls_url
       assert_response :success
     end
+
+    it 'responds to js' do
+      get earls_url(format: :js), xhr: true
+      assert_response :success
+    end
+
+    it 'responds to page params for js requests' do
+      get earls_url(page: 1, format: :js), xhr: true
+      refute response.body.include?(I18n.t('messages.nothing_else_here'))
+      get earls_url(page: 2, format: :js), xhr: true
+      assert response.body.include?(I18n.t('messages.nothing_else_here'))
+    end
   end
 
   describe '#create' do

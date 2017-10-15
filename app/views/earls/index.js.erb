@@ -1,0 +1,7 @@
+<% if earls.any? %>
+	$("#earls").append("<%= escape_javascript render partial: 'list_earls', locals: { earls: earls } %>");
+<% end %>
+<% if earls.empty? || earls.last_page? %>
+	$("#load-more > button").remove();
+	$("#load-more").html("<p> <%= t('messages.nothing_else_here') %> </p> ");
+<% end %>

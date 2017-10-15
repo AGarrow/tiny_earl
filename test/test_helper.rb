@@ -25,4 +25,8 @@ class TinyEarl::IntegrationTest < ActionDispatch::IntegrationTest
     Capybara.reset_sessions!
     Capybara.use_default_driver
   end
+
+  def wait_for_ajax
+    loop until page.evaluate_script('jQuery.active').zero?
+  end
 end
