@@ -18,7 +18,6 @@ class EarlsControllerTest < ActionDispatch::IntegrationTest
 
       assert_response :success
       json = JSON.parse(response.body)
-      assert_equal 'https://facebook.com', json['full_url']
       refute_nil json['short_url']
     end
 
@@ -28,7 +27,7 @@ class EarlsControllerTest < ActionDispatch::IntegrationTest
       end
       assert_response :success
       json = JSON.parse(response.body)
-      assert_equal youtube.short_url, json['short_url']
+      assert_equal earl_url(youtube), json['short_url']
     end
 
     it 'should return a json with errors if an invalid URL is submitted' do

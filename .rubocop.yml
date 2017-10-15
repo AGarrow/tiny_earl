@@ -6,6 +6,11 @@ AllCops:
     - 'db/**/*'
     - 'config/**/*'
     - 'script/**/*'
+    - 'test/test_helper.rb'
+    - 'Gemfile'
+    - 'Gemfile.lock'
     - !ruby/regexp /old_and_unused\.rb$/
 Metrics/LineLength:
   Max: 100
+Layout/IndentationConsistency:
+  EnforcedStyle: rails 
