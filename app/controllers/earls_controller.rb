@@ -15,7 +15,7 @@ class EarlsController < ApplicationController
   def create
     earl = Earl.find_or_create_by(earl_params)
     if earl.persisted?
-      render json: earl
+      render json: { short_url: earl_url(earl) }
     else
       render json: earl.errors, status: :unprocessable_entity
     end
