@@ -14,6 +14,7 @@ namespace :earls do
     LIMIT = 50
     0.upto(3) do |page|
       session.subreddit('all').top(limit: LIMIT, count: page * LIMIT, after: last_post_name).each do |post|
+        next if Earl.find_by(full_url: post.url)
         Earl.create(full_url: post.url, view_count: post.score)
         last_post_name = post.name
       end
