@@ -23,3 +23,9 @@ Tests can be run simply by running `rails test` from the root directory of the p
 
 run `rubocop` to ensure style is OK before committing code.
 
+
+### Notes
+
+#### Infinite Scroll
+
+I know the spec asked for the top 100 most viewed URLs, and I had it configured this way until I thought "hey, wouldn't it be cooler if it was really infinite?" this can easily be set back to the top 100 simply by uncommenting `config.makes_pages = 4` in `kaminari_config.rb`
